@@ -2,7 +2,7 @@
 // Replace RAZORPAY_KEY_ID with your actual test key from razorpay.com/dashboard
 // Test key format: rzp_test_XXXXXXXXXX
 
-const RAZORPAY_KEY_ID = 'rzp_test_YourKeyHere'; // <-- Replace this
+const RAZORPAY_KEY_ID = 'rzp_test_SesLfoPwsSVGan';
 const PLATFORM_FEE_PERCENT = 10; // FoodSave Kerala takes 10% commission
 
 export function calcPayment(discountedPrice) {
