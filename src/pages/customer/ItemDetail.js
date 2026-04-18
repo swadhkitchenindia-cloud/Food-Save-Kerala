@@ -74,7 +74,9 @@ export default function CustomerDetail() {
         setPaying(false);
       },
       onFailure: (msg) => {
-        alert(msg);
+        if (!msg.includes('cancelled')) {
+          alert(msg);
+        }
         setPaying(false);
       },
     });
