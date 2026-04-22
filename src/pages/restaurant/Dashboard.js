@@ -58,6 +58,14 @@ export default function RestaurantDashboard() {
       </div>
 
       <div className="content">
+        {profile?.verificationStatus === 'pending' && (
+          <div style={{ background: 'var(--amber-light)', borderRadius: 12, padding: '13px 14px', marginBottom: 14, border: '1px solid #EF9F27' }}>
+            <div style={{ fontSize: 14, fontWeight: 600, color: '#854F0B', marginBottom: 3 }}>⏳ Verification in progress</div>
+            <div style={{ fontSize: 13, color: '#854F0B', lineHeight: 1.6 }}>
+              Our team is reviewing your FSSAI license. You'll receive a call on <b>{profile?.ownerPhone}</b> within 2-3 business days. You can set up your profile in the meantime.
+            </div>
+          </div>
+        )}
         <div className="stats-grid">
           <div className="stat-card accent">
             <div className="stat-val">₹{todayRevenue.toLocaleString()}</div>

@@ -17,11 +17,27 @@ import CustomerOrders from './pages/customer/Orders';
 import CustomerProfile from './pages/customer/Profile';
 import CustomerMap from './pages/customer/MapView';
 
+// Customers can browse freely — only redirect to login when needed
+function CustomerFreeRoute({ children }) {
+  const { loading } = useAuth();
+  if (loading) return <div className="app-shell"><div className="spinner" /></div>;
+  return <div className="app-shell">{children}</div>;
+}
+
+// Restaurant still needs full auth
 function ProtectedRoute({ children, role }) {
   const { user, profile, loading } = useAuth();
   if (loading) return <div className="app-shell"><div className="spinner" /></div>;
   if (!user) return <Navigate to="/" replace />;
   if (role && profile?.role !== role) return <Navigate to="/" replace />;
+  return <div className="app-shell">{children}</div>;
+}
+
+// Customer protected — only for pages that need login (orders, profile)
+function CustomerProtectedRoute({ children }) {
+  const { user, profile, loading } = useAuth();
+  if (loading) return <div className="app-shell"><div className="spinner" /></div>;
+  if (!user || profile?.role !== 'customer') return <Navigate to="/customer/login" replace />;
   return <div className="app-shell">{children}</div>;
 }
 
@@ -41,7 +57,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<PublicRoute><Landing /></PublicRoute>} />
 
-          {/* Restaurant */}
+          {/* Restaurant — full auth required */}
           <Route path="/restaurant/login" element={<PublicRoute><RestaurantLogin /></PublicRoute>} />
           <Route path="/restaurant/register" element={<PublicRoute><RestaurantRegister /></PublicRoute>} />
           <Route path="/restaurant/dashboard" element={<ProtectedRoute role="restaurant"><RestaurantDashboard /></ProtectedRoute>} />
@@ -50,15 +66,17 @@ export default function App() {
           <Route path="/restaurant/earnings" element={<ProtectedRoute role="restaurant"><RestaurantEarnings /></ProtectedRoute>} />
           <Route path="/restaurant/profile" element={<ProtectedRoute role="restaurant"><RestaurantProfile /></ProtectedRoute>} />
 
-          {/* Customer — phone OTP login, no separate register page */}
-          <Route path="/customer/login" element={<PublicRoute><CustomerLogin /></PublicRoute>} />
-          <Route path="/customer/browse" element={<ProtectedRoute role="customer"><CustomerBrowse /></ProtectedRoute>} />
-          <Route path="/customer/map" element={<ProtectedRoute role="customer"><CustomerMap /></ProtectedRoute>} />
-          <Route path="/customer/item/:id" element={<ProtectedRoute role="customer"><CustomerDetail /></ProtectedRoute>} />
-          <Route path="/customer/orders" element={<ProtectedRoute role="customer"><CustomerOrders /></ProtectedRoute>} />
-          <Route path="/customer/profile" element={<ProtectedRoute role="customer"><CustomerProfile /></ProtectedRoute>} />
+          {/* Customer — browse & item detail are FREE (no login needed) */}
+          <Route path="/customer/login" element={<div className="app-shell"><CustomerLogin /></div>} />
+          <Route path="/customer/browse" element={<CustomerFreeRoute><CustomerBrowse /></CustomerFreeRoute>} />
+          <Route path="/customer/map" element={<CustomerFreeRoute><CustomerMap /></CustomerFreeRoute>} />
+          <Route path="/customer/item/:id" element={<CustomerFreeRoute><CustomerDetail /></CustomerFreeRoute>} />
 
-          <Route path="*" element={<Navigate to="/" replace />} />
+          {/* Customer — these pages need login */}
+          <Route path="/customer/orders" element={<CustomerProtectedRoute><CustomerOrders /></CustomerProtectedRoute>} />
+          <Route path="/customer/profile" element={<CustomerProtectedRoute><CustomerProfile /></CustomerProtectedRoute>} />
+
+          <Route path="*" element={<Navigate to="/customer/browse" replace />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

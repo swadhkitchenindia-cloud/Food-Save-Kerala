@@ -99,17 +99,29 @@ function LocationPicker({ userLocation, onLocationSet }) {
   const [detecting, setDetecting] = useState(false);
 
   const detectLocation = () => {
+    if (!navigator.geolocation) { setShowManual(true); return; }
     setDetecting(true);
     navigator.geolocation.getCurrentPosition(
-      pos => {
-        onLocationSet({ lat: pos.coords.latitude, lng: pos.coords.longitude, label: 'Current location', auto: true });
+      async (pos) => {
+        const { latitude: lat, longitude: lng } = pos.coords;
+        try {
+          const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`);
+          const data = await res.json();
+          const suburb = data.address?.suburb || data.address?.neighbourhood || data.address?.village || '';
+          const city = data.address?.city || data.address?.town || data.address?.county || 'Kerala';
+          const label = suburb ? `${suburb}, ${city}` : city;
+          onLocationSet({ lat, lng, label, auto: true });
+        } catch {
+          onLocationSet({ lat, lng, label: 'Current location', auto: true });
+        }
         setDetecting(false);
       },
-      () => {
+      (err) => {
         setDetecting(false);
+        if (err.code === 1) alert('Location permission denied. Please enter your area manually.');
         setShowManual(true);
       },
-      { timeout: 8000 }
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
     );
   };
 

@@ -14,7 +14,7 @@ export default function Landing() {
       <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '12px' }}>
         <p style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em', textAlign: 'center' }}>I am a...</p>
 
-        <div onClick={() => nav('/customer/login')} style={{ background: 'var(--white)', border: '1px solid var(--border)', borderRadius: 16, padding: '18px 20px', cursor: 'pointer', display: 'flex', gap: 16, alignItems: 'center', boxShadow: 'var(--shadow-md)', transition: 'border-color 0.15s' }}
+        <div onClick={() => nav('/customer/browse')} style={{ background: 'var(--white)', border: '1px solid var(--border)', borderRadius: 16, padding: '18px 20px', cursor: 'pointer', display: 'flex', gap: 16, alignItems: 'center', boxShadow: 'var(--shadow-md)', transition: 'border-color 0.15s' }}
           onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--green-mid)'}
           onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border)'}>
           <div style={{ fontSize: 32 }}>🛍️</div>
