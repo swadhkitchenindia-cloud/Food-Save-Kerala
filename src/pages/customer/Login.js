@@ -81,8 +81,8 @@ export default function CustomerLogin() {
 
       {/* Header */}
       <div style={{ background: 'var(--green)', padding: '40px 24px 32px', textAlign: 'center' }}>
-        <div style={{ fontSize: 48, marginBottom: 8 }}>🍃</div>
-        <div style={{ fontSize: 22, fontWeight: 700, color: 'white' }}>FoodSave Kerala</div>
+        <div style={{ fontSize: 48, marginBottom: 8 }}>🍊</div>
+        <div style={{ fontSize: 22, fontWeight: 700, color: 'white' }}>Saver</div>
         <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)', marginTop: 4 }}>
           Great food. Less waste. Bigger savings.
         </div>

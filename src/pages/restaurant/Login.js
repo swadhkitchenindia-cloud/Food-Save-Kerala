@@ -25,8 +25,8 @@ export default function RestaurantLogin() {
   return (
     <div className="login-page">
       <div className="login-logo">
-        <div className="login-logo-icon">🍃</div>
-        <h1>FoodSave Kerala</h1>
+        <div className="login-logo-icon">🍊</div>
+        <h1>Saver</h1>
         <p>Partner login for restaurants, bakeries & cafes</p>
       </div>
       <form className="login-card" onSubmit={submit} style={{ width: '100%' }}>

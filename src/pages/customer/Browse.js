@@ -4,6 +4,7 @@ import { db } from '../../firebase/config';
 import { collection, query, where, onSnapshot } from 'firebase/firestore';
 import CustomerNav from '../../components/CustomerNav';
 import { useAuth } from '../../components/AuthContext';
+import { requestNotificationPermission } from '../../firebase/notifications';
 
 const CATEGORIES = ['All', 'Bakery items', 'Meals / Rice', 'Snacks', 'Sweets & Desserts', 'Beverages', 'Breads', 'Biriyani', 'Seafood'];
 const RADIUS_KM = 25;

@@ -25,8 +25,8 @@ export default function CustomerRegister() {
   return (
     <div className="login-page">
       <div className="login-logo">
-        <div className="login-logo-icon">🍃</div>
-        <h1>Join FoodSave Kerala</h1>
+        <div className="login-logo-icon">🍊</div>
+        <h1>Join Saver</h1>
         <p>Save money, rescue food, support local</p>
       </div>
       <form className="login-card" onSubmit={submit} style={{ width: '100%' }}>

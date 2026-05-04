@@ -58,7 +58,7 @@ export async function initiatePayment({ listing, customer, onSuccess, onFailure 
       key: RAZORPAY_KEY_ID,
       amount: total * 100,
       currency: 'INR',
-      name: 'FoodSave Kerala',
+      name: 'Saver',
       description: `${listing.name} from ${listing.restaurantName}`,
       prefill: {
         name: customer?.name || '',

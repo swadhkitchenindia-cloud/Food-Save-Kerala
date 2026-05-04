@@ -52,7 +52,7 @@ export default function RestaurantEarnings() {
           <div style={{ background: 'var(--amber-light)', borderRadius: 12, padding: '13px 14px', marginBottom: 16, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
               <div style={{ fontSize: 13, fontWeight: 600, color: '#854F0B' }}>Payout pending</div>
-              <div style={{ fontSize: 12, color: '#854F0B', marginTop: 2 }}>FoodSave will transfer within 2 business days</div>
+              <div style={{ fontSize: 12, color: '#854F0B', marginTop: 2 }}>Saver will transfer within 2 business days</div>
             </div>
             <div style={{ fontSize: 18, fontWeight: 700, color: '#854F0B' }}>₹{pendingPayout.toLocaleString()}</div>
           </div>
@@ -60,8 +60,8 @@ export default function RestaurantEarnings() {
 
         <div className="section-lbl">How payouts work</div>
         <div style={{ background: 'var(--gray)', borderRadius: 12, padding: '14px', marginBottom: 16, fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.7 }}>
-          1. Customer pays FoodSave Kerala via Razorpay{'\n'}
-          2. FoodSave deducts 10% platform fee{'\n'}
+          1. Customer pays Saver via Razorpay{'\n'}
+          2. Saver deducts 10% platform fee{'\n'}
           3. Remaining 90% is transferred to your bank account within 2 business days{'\n'}
           4. Add your bank account in Profile → Payout account
         </div>

@@ -88,7 +88,7 @@ export default function RestaurantRegister() {
   return (
     <div className="login-page" style={{ paddingTop: 20 }}>
       <div className="login-logo">
-        <div className="login-logo-icon">🍃</div>
+        <div className="login-logo-icon">🍊</div>
         <h1>Partner Registration</h1>
         <p>Step {step} of 2 — {step === 1 ? 'Basic details' : 'License & verification'}</p>
       </div>
@@ -145,7 +145,7 @@ export default function RestaurantRegister() {
       {step === 2 && (
         <form className="login-card" onSubmit={submitStep2} style={{ width: '100%' }}>
           <h2>License & verification</h2>
-          <p style={{ marginBottom: 16 }}>Required to list food on FoodSave Kerala</p>
+          <p style={{ marginBottom: 16 }}>Required to list food on Saver</p>
           {err && <div className="error-msg">{err}</div>}
 
           <div style={{ background: 'var(--amber-light)', borderRadius: 10, padding: '10px 13px', marginBottom: 16, fontSize: 13, color: '#854F0B' }}>
