@@ -316,7 +316,7 @@ export default function CustomerBrowse() {
         )}
 
         {filtered.map(l => (
-          <div className="food-card" key={l.id} onClick={() => nav(`/customer/item/${l.id}`)}>
+          <div className="food-card" key={l.id} onClick={() => nav(`/item/${l.id}`)}>
             <div className="food-emoji-box" style={{ background: l.imageUrl ? 'transparent' : 'var(--gray)', overflow: 'hidden' }}>
               {l.imageUrl
                 ? <img src={l.imageUrl} alt={l.name} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 12 }} />

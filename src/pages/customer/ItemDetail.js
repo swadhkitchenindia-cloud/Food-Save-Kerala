@@ -211,7 +211,7 @@ export default function CustomerDetail() {
     <div className="empty-state" style={{ paddingTop: 80 }}>
       <div className="icon">❓</div>
       <h3>Item not found</h3>
-      <button className="btn-primary" style={{ marginTop: 16 }} onClick={() => nav('/customer/browse')}>Back to browse</button>
+      <button className="btn-primary" style={{ marginTop: 16 }} onClick={() => nav('/')}>Back to browse</button>
     </div>
   );
 
@@ -243,8 +243,8 @@ export default function CustomerDetail() {
           {paymentId && <div style={{ fontSize: 11, color: 'var(--text-muted)', borderTop: '1px solid var(--border)', paddingTop: 6, marginTop: 2 }}>Payment ID: {paymentId}</div>}
         </div>
         <div style={{ display: 'flex', gap: 10, width: '100%' }}>
-          <button className="btn-primary" onClick={() => nav('/customer/orders')}>View my orders</button>
-          <button className="btn-outline" onClick={() => nav('/customer/browse')}>Browse more</button>
+          <button className="btn-primary" onClick={() => nav('/orders')}>View my orders</button>
+          <button className="btn-outline" onClick={() => nav('/')}>Browse more</button>
         </div>
       </div>
     );

@@ -1,32 +1,17 @@
 {
   "short_name": "Saver",
-  "name": "Saver",
-  "description": "Save money on great food from local restaurants & cafes",
+  "name": "Saver — Food Deals Kerala",
+  "description": "Save up to 60% on great food from local restaurants and cafes in Kerala",
   "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any maskable"
-    }
+    { "src": "favicon.ico", "sizes": "64x64 32x32 24x24 16x16", "type": "image/x-icon" },
+    { "src": "logo192.png", "type": "image/png", "sizes": "192x192", "purpose": "any maskable" },
+    { "src": "logo512.png", "type": "image/png", "sizes": "512x512", "purpose": "any maskable" }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#0F6E56",
-  "background_color": "#ffffff",
+  "background_color": "#F5F2EC",
   "categories": ["food", "shopping", "lifestyle"],
-  "lang": "en-IN",
-  "scope": "/"
+  "lang": "en-IN"
 }

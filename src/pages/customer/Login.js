@@ -56,7 +56,7 @@ export default function CustomerLogin() {
         setIsNewUser(true);
         setStep('name');
       } else {
-        nav('/customer/browse');
+        nav('/');
       }
     } catch (e) {
       setErr('Invalid OTP. Please try again.');
@@ -68,7 +68,7 @@ export default function CustomerLogin() {
     if (!name.trim()) return setErr('Please enter your name');
     setLoading(true);
     try {
-      nav('/customer/browse');
+      nav('/');
     } catch (e) {
       setErr('Something went wrong');
     }
@@ -113,7 +113,7 @@ export default function CustomerLogin() {
               {loading ? 'Sending OTP...' : 'Send OTP →'}
             </button>
             <div style={{ textAlign: 'center', marginTop: 20, fontSize: 13, color: 'var(--text-secondary)' }}>
-              Restaurant partner? <span style={{ color: 'var(--green)', cursor: 'pointer', fontWeight: 500 }} onClick={() => nav('/restaurant/login')}>Login here →</span>
+              Restaurant partner? <span style={{ color: 'var(--green)', cursor: 'pointer', fontWeight: 500 }} onClick={() => window.open('https://partner.saver.in', '_blank')}>Login here →</span>
             </div>
           </form>
         )}

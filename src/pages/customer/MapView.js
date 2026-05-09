@@ -167,7 +167,7 @@ export default function MapView() {
             <div style={{ textAlign: 'right', flexShrink: 0 }}>
               <div style={{ fontSize: 11, color: 'var(--text-muted)', textDecoration: 'line-through' }}>₹{selected.originalPrice}</div>
               <div style={{ fontSize: 18, fontWeight: 700, color: 'var(--green)', marginBottom: 6 }}>₹{selected.discountedPrice}</div>
-              <button onClick={() => nav(`/customer/item/${selected.id}`)} style={{ background: 'var(--green)', color: 'white', border: 'none', borderRadius: 8, padding: '6px 14px', fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>
+              <button onClick={() => nav(`/item/${selected.id}`)} style={{ background: 'var(--green)', color: 'white', border: 'none', borderRadius: 8, padding: '6px 14px', fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit' }}>
                 Reserve →
               </button>
             </div>
