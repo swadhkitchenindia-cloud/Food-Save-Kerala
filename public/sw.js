@@ -1,32 +1,28 @@
-const CACHE = 'foodsave-v1';
-const OFFLINE_URL = '/';
+const CACHE = 'saver-v6';
 
-self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(CACHE).then(cache =>
-      cache.addAll(['/', '/static/js/main.chunk.js', '/static/css/main.chunk.css'])
-        .catch(() => cache.add('/'))
-    )
-  );
-  self.skipWaiting();
-});
+self.addEventListener('install', () => self.skipWaiting());
 
 self.addEventListener('activate', e => {
-  e.waitUntil(caches.keys().then(keys =>
-    Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
-  ));
-  self.clients.claim();
+  e.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+    ).then(() => self.clients.claim())
+  );
 });
 
+// Network first — always try network, fall back to cache
 self.addEventListener('fetch', e => {
+  // Skip non-GET and Firebase/API requests
   if (e.request.method !== 'GET') return;
+  if (e.request.url.includes('firestore') || e.request.url.includes('firebase') || e.request.url.includes('googleapis')) return;
+
   e.respondWith(
     fetch(e.request)
-      .then(response => {
-        const clone = response.clone();
-        caches.open(CACHE).then(cache => cache.put(e.request, clone));
-        return response;
+      .then(res => {
+        const clone = res.clone();
+        caches.open(CACHE).then(c => c.put(e.request, clone));
+        return res;
       })
-      .catch(() => caches.match(e.request).then(r => r || caches.match(OFFLINE_URL)))
+      .catch(() => caches.match(e.request).then(r => r || fetch(e.request)))
   );
 });
