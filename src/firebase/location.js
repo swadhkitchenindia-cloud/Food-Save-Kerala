@@ -48,7 +48,7 @@ export async function reverseGeocode(lat, lng) {
 // Forward geocode — text to coordinates (for manual entry fallback)
 export async function forwardGeocode(text) {
   try {
-    const query = encodeURIComponent(text + ', India');
+    const query = encodeURIComponent(text); // No country bias — works for all India
     const res = await fetch(
       `https://nominatim.openstreetmap.org/search?q=${query}&format=json&limit=5&accept-language=en`
     );

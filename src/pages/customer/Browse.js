@@ -102,7 +102,7 @@ function LocationBar({ userLoc, onSet, onClear }) {
         </div>
       ) : (
         <div style={{ position: 'relative' }}>
-          <input value={query2} onChange={e => search(e.target.value)} placeholder="Type city or area e.g. Bangalore, Kochi..." autoFocus
+          <input value={query2} onChange={e => search(e.target.value)} placeholder="Type your city or area..." autoFocus
             style={{ width: '100%', border: '1.5px solid #0F6E56', borderRadius: 8, padding: '10px 12px', fontSize: 14, outline: 'none', fontFamily: 'inherit' }} />
           {results.length > 0 && (
             <div style={{ position: 'absolute', top: '100%', left: 0, right: 0, background: 'white', borderRadius: '0 0 10px 10px', boxShadow: '0 4px 16px rgba(0,0,0,0.12)', zIndex: 50, maxHeight: 200, overflowY: 'auto', border: '1px solid #E8E6DF' }}>
@@ -258,7 +258,12 @@ export default function CustomerBrowse() {
             <p style={{ marginBottom: 16 }}>
               {userLoc ? `No listings within ${RADIUS_KM}km of ${userLoc.label}. Try a different location or check back later.` : 'Restaurants post deals throughout the day — check back soon!'}
             </p>
-            {userLoc && <button className="btn-outline" style={{ maxWidth: 240, margin: '0 auto' }} onClick={handleClearLoc}>Show all listings</button>}
+            {userLoc && (
+              <button className="btn-outline" style={{ maxWidth: 280, margin: '0 auto' }}
+                onClick={handleClearLoc}>
+                Show all deals in India
+              </button>
+            )}
           </div>
         ) : (
           filtered.map(l => (
